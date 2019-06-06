@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.miracle.api.service.bean.FeatureMetadetails;
+import com.miracle.api.service.bean.FeatureStoryDetails;
 import com.miracle.common.api.bean.Feature;
 import com.miracle.common.controller.APIMicroService;
-import com.miracle.exception.GatewayServiceException;
-import com.miracle.story.bean.FeatureMetadetails;
-import com.miracle.story.bean.FeatureStoryDetails;
+import com.miracle.exception.APIFrameworkException;
 import com.miracle.story.exception.StoryErrorCode;
 import com.miracle.story.exception.StoryException;
 
@@ -47,7 +47,7 @@ public class StoryController extends APIMicroService {
 			logger.error("Getting exception in extracting stories from feature, Exception Description :: "
 					+ storyException.getMessage(), storyException);
 			throw storyException;
-		} catch (GatewayServiceException gatewayServiceException) {
+		} catch (APIFrameworkException gatewayServiceException) {
 			logger.error("Getting exception in extracting stories from feature, Exception Description :: "
 					+ gatewayServiceException.getMessage(), gatewayServiceException);
 			throw gatewayServiceException;
